@@ -136,7 +136,7 @@ const NetworkStatsSection = () => {
       className="px-4 md:px-6 py-20 bg-gradient-to-b from-black via-green-950/5 to-black"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 2.2, delay: 3.2 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto">
