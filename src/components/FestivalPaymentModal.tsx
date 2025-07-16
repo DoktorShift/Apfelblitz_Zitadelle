@@ -487,7 +487,6 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                   />
                   <span className="hover:underline">Aurora</span>
                 </a>
-                </div>
               </motion.div>
             </div>
           </div>
