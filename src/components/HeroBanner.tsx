@@ -20,7 +20,7 @@ const HeroBanner = () => {
             transition={{
               duration: Math.random() * 15 + 15,
               repeat: Infinity,
-              delay: Math.random() * 10,
+              delay: Math.random() * 15,
               ease: "linear",
             }}
             style={{
