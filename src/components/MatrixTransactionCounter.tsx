@@ -55,8 +55,8 @@ const MatrixTransactionCounter = () => {
             <MatrixCounterEffect 
               value={count.toLocaleString()} 
               className="text-4xl font-bold text-green-400"
-              duration={500}
-              delay={100}
+              duration={5000}
+              delay={2000}
             />
           )}
           
