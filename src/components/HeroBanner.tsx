@@ -9,7 +9,7 @@ const HeroBanner = () => {
     <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Subtle Matrix Rain Background */}
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        {[...Array(100)].map((_, i) => (
+        {[...Array(75)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-green-400 font-mono text-xs"
