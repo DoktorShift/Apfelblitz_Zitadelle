@@ -52,7 +52,7 @@ const HeroBanner = () => {
             initialDelay={500}
             letterInterval={120}
             letterAnimationDuration={600}
-            repeatInterval={5000}
+            repeatInterval={15000}
           />
         </motion.div>
 
