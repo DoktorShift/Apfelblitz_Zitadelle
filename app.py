@@ -67,6 +67,32 @@ def init_db():
     except Exception as e:
         logging.error(f"Fehler bei der DB-Initialisierung: {str(e)}")
 
+# === Hilfsfunktionen zur Kommentarbereinigung ===
+def clean_comment(comment):
+    if not comment:
+        return ""
+    # entferne führende/trailing Whitespace und äußere Anführungszeichen
+    return comment.strip().strip('"').strip("'")
+
+
+def extract_cleaned_zap_comment(zap_receipt_raw):
+    try:
+        if not zap_receipt_raw or zap_receipt_raw.strip() in ["null", "[]", ""]:
+            return ""
+        zap_data = json.loads(zap_receipt_raw)
+        if isinstance(zap_data, list) and len(zap_data) > 1:
+            tags = zap_data[1].get("tags", [])
+            for tag in tags:
+                if tag[0] == "description":
+                    desc_json = tag[1]
+                    if isinstance(desc_json, str):
+                        inner = json.loads(desc_json)
+                        content = inner.get("content", "")
+                        return clean_comment(content)
+    except Exception as e:
+        logging.warning(f"Fehler beim Parsen von zap_receipt: {e}")
+    return ""
+
 # === Webhook speichern ===
 def store_webhook(data):
     try:
@@ -217,10 +243,16 @@ def api_payment_webhook_list():
 
             transactions = []
             for row in rows:
+                # bereinige normalen Kommentar
+                plain_comment = clean_comment(row[2])
+                # falls leer: zap-Kommentar extrahieren
+                zap_comment = extract_cleaned_zap_comment(row[3])
+                comment = plain_comment if plain_comment else zap_comment
+
                 transactions.append({
                     "amount": row[0] // 1000,  # msats → sats
                     "received_at": row[1],
-                    "comment": row[2],
+                    "comment": comment,
                     "is_zap": bool(row[3] and row[3].strip() not in ["", "null", "[]"])
                 })
 
@@ -245,5 +277,5 @@ def api_counter_webhook():
 # === Start ===
 if __name__ == '__main__':
     init_db()
-    logging.info("Webhook-Service gestartet auf Port 5055.")
+    logging.info("Webhook-Service gestartet auf Port 5013.")
     app.run(host='127.0.0.1', port=5055)

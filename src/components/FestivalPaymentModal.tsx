@@ -428,7 +428,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
 
               {/* Action Buttons - Mobile optimized */}
               <motion.div
-                className="space-y-3"
+                className="mb-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
@@ -445,32 +445,6 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                   <Wallet className="h-5 w-5 mr-3 relative z-10" />
                   <span className="relative z-10">OPEN_WALLET</span>
                   <ExternalLink className="h-4 w-4 ml-3 relative z-10" />
-                </Button>
-
-                <Button
-                  onClick={() => copyToClipboard(lnurl)}
-                  variant="outline"
-                  className="w-full border-2 border-green-400/60 text-green-400 hover:bg-green-900/40 hover:border-green-300/80 font-mono font-bold py-4 text-base rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(34,197,94,0.2)] hover:shadow-[0_0_25px_rgba(34,197,94,0.4)] relative overflow-hidden group min-h-[52px]"
-                  aria-label="Copy payment information to clipboard"
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
-                  />
-                  {copied ? (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="flex items-center relative z-10"
-                    >
-                      <CheckCircle className="h-5 w-5 mr-3 text-green-400" />
-                      <span>COPIED!</span>
-                    </motion.div>
-                  ) : (
-                    <>
-                      <Copy className="h-5 w-5 mr-3 relative z-10" />
-                      <span className="relative z-10">COPY_PAYMENT</span>
-                    </>
-                  )}
                 </Button>
               </motion.div>
 
@@ -490,29 +464,29 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                 </div>
               </motion.div>
 
-              {/* Footer - Compact */}
+              {/* Aurora Footer */}
               <motion.div
                 className="text-center border-t border-green-900/40 pt-3 mt-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
               >
-                <div className="flex items-center justify-center gap-2 text-green-400/70 text-xs font-mono">
-                  <motion.div
-                    animate={{ opacity: [0.3, 1, 0.3], scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <Zap className="h-3 w-3" />
-                  </motion.div>
-                  <span className="tracking-wider">
-                    Lightning Network • Sound Money
-                  </span>
-                  <motion.div
-                    animate={{ opacity: [0.3, 1, 0.3], scale: [1, 1.2, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                  >
-                    <Zap className="h-3 w-3" />
-                  </motion.div>
+                <a 
+                  href="https://aurora-pay.mybuho.de" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-green-400/70 hover:text-green-400 text-xs font-mono transition-colors duration-300 hover:scale-105 transform"
+                >
+                  <span>pwrd by</span>
+                  <motion.img 
+                    src="/aurora_logo.png" 
+                    alt="Aurora" 
+                    className="h-4 w-4 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  />
+                  <span className="hover:underline">Aurora</span>
+                </a>
                 </div>
               </motion.div>
             </div>
