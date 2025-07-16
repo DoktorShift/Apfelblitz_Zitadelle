@@ -484,7 +484,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                 <div className="flex items-center gap-2 text-cyan-400/90 text-xs font-mono">
                   <Info className="h-3 w-3 flex-shrink-0 animate-pulse" />
                   <div>
-                    <p className="font-bold">20% supports DrShift.dev</p>
+                    <p className="font-bold">20% support to DrShift.dev</p>
                     <p className="text-cyan-400/70 text-xs">Lightning & Nostr development</p>
                   </div>
                 </div>
