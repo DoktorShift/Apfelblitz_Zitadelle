@@ -58,15 +58,15 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-2xl text-orange-400"
-              duration={1000}
-              delay={0}
+              duration={3000}
+              delay={2}
             />
           ) : (
             <MatrixCounterEffect 
               value={balances.btc.toFixed(8)} 
               className="text-2xl font-bold text-orange-400"
-              duration={500}
-              delay={100}
+              duration={3000}
+              delay={200}
             />
           )}
         </div>
