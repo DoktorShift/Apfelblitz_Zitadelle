@@ -47,8 +47,8 @@ const MatrixTransactionCounter = () => {
               <MatrixCounterEffect 
                 value="LOADING..." 
                 className="text-4xl"
-                duration={1000}
-                delay={0}
+                duration={5000}
+                delay={2}
               />
             </div>
           ) : (
