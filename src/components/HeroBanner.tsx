@@ -109,9 +109,6 @@ const HeroBanner = () => {
         <div className="w-6 h-10 border-2 border-green-400/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-green-400 rounded-full mt-2 animate-pulse"></div>
         </div>
-        <p className="text-green-400 font-mono text-xs mt-2 text-center">
-          scroll_down
-        </p>
       </motion.div>
     </div>
   );
