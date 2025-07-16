@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import PaymentModal from './PaymentModal';
+import FestivalPaymentModal from './FestivalPaymentModal';
 
 const MatrixAppleChoice = () => {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
@@ -157,9 +157,10 @@ const MatrixAppleChoice = () => {
       </div>
 
       {/* Payment Modal */}
-      <PaymentModal 
+      <FestivalPaymentModal 
         isOpen={showPaymentModal} 
-        onClose={closeModal} 
+        onClose={closeModal}
+        selectedApple={selectedApple}
       />
     </div>
   );
