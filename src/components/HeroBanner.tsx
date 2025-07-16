@@ -9,16 +9,16 @@ const HeroBanner = () => {
     <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Subtle Matrix Rain Background */}
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(100)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-green-400 font-mono text-xs"
             animate={{
               y: [0, window.innerHeight + 100],
-              opacity: [0, 0.9, 0.9, 0],
+              opacity: [0, 1, 1, 0],
             }}
             transition={{
-              duration: Math.random() * 15 + 15,
+              duration: Math.random() * 10 + 10,
               repeat: Infinity,
               delay: Math.random() * 10,
               ease: "linear",
@@ -52,6 +52,7 @@ const HeroBanner = () => {
             initialDelay={500}
             letterInterval={120}
             letterAnimationDuration={600}
+            repeatInterval={5000}
           />
         </motion.div>
 
