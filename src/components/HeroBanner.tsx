@@ -15,7 +15,7 @@ const HeroBanner = () => {
             className="absolute text-green-400 font-mono text-xs"
             animate={{
               y: [0, window.innerHeight + 100],
-              opacity: [0, 0.8, 0.8, 0],
+              opacity: [0, 0.9, 0.9, 0],
             }}
             transition={{
               duration: Math.random() * 15 + 15,
