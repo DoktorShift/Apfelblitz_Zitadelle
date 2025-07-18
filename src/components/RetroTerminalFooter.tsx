@@ -59,6 +59,7 @@ const RetroTerminalFooter = () => {
       role: "Developer", 
       name: "DrShift",
       nostr: "https://primal.net/p/nprofile1qqs0v9gpww6adureks65pkz2322a2r8srfyvn4sr0xzw8ktqp42j9tcxwxva2",
+      x: "https://x.com/DrShift3",
       icon: "◾️",
       color: "text-cyan-400"
     }
