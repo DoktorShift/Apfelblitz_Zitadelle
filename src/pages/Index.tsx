@@ -4,6 +4,7 @@ import HeroBanner from '@/components/HeroBanner';
 import NetworkStatsSection from '@/components/NetworkStatsSection';
 import MatrixAppleChoice from '@/components/MatrixAppleChoice';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import RetroTerminalFooter from '@/components/RetroTerminalFooter';
 import { useTranslation } from 'react-i18next';
 
 const Index = () => {
@@ -127,6 +128,9 @@ const Index = () => {
           </div>
         </motion.section>
       </div>
+      
+      {/* Retro Terminal Footer */}
+      <RetroTerminalFooter />
     </div>
   );
 };
