@@ -9,18 +9,18 @@ const HeroBanner = () => {
     <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Subtle Matrix Rain Background */}
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(75)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute text-green-400 font-mono text-xs"
             animate={{
               y: [0, window.innerHeight + 100],
-              opacity: [0, 0.8, 0.8, 0],
+              opacity: [0, 1, 1, 0],
             }}
             transition={{
               duration: Math.random() * 15 + 15,
               repeat: Infinity,
-              delay: Math.random() * 10,
+              delay: Math.random() * 15,
               ease: "linear",
             }}
             style={{
@@ -52,6 +52,7 @@ const HeroBanner = () => {
             initialDelay={500}
             letterInterval={120}
             letterAnimationDuration={600}
+            repeatInterval={15000}
           />
         </motion.div>
 
@@ -109,9 +110,6 @@ const HeroBanner = () => {
         <div className="w-6 h-10 border-2 border-green-400/50 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-green-400 rounded-full mt-2 animate-pulse"></div>
         </div>
-        <p className="text-green-400 font-mono text-xs mt-2 text-center">
-          scroll_down
-        </p>
       </motion.div>
     </div>
   );

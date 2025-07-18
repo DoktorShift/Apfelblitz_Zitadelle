@@ -58,14 +58,15 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-2xl text-orange-400"
-              duration={800}
+              duration={3000}
+              delay={2}
             />
           ) : (
             <MatrixCounterEffect 
               value={balances.btc.toFixed(8)} 
               className="text-2xl font-bold text-orange-400"
-              duration={500}
-              delay={100}
+              duration={3000}
+              delay={200}
             />
           )}
         </div>
@@ -79,8 +80,8 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-xl text-yellow-400"
-              duration={800}
-              delay={200}
+              duration={1000}
+              delay={0}
             />
           ) : (
             <MatrixCounterEffect 
@@ -102,16 +103,16 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-xl text-blue-400"
-              duration={800}
-              delay={300}
+              duration={1000}
+              delay={0}
             />
           ) : (
             <MatrixCounterEffect 
               value={balances.lightning.toLocaleString()} 
               suffix=" sats"
               className="text-xl font-bold text-blue-400"
-              duration={2000}
-              delay={7000}
+              duration={500}
+              delay={300}
             />
           )}
         </div>
