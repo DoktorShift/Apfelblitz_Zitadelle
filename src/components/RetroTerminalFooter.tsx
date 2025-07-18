@@ -9,7 +9,11 @@ const RetroTerminalFooter = () => {
   const slogans = [
     "If you can read this, you're the resistance.",
     "The code was never the problem.",
-    "What you see is not what you get."
+    "What you see is not what you get.",
+    "What you believe is the cage.",
+    "There is no screen. Only signal.",
+    "The root problem with conventional currency is all the trust that's required to make it work.",
+    "Governments are good at cutting off the heads of a centrally controlled network like Napster, but pure P2P networks like Gnutella and Tor seem to be holding their own."
   ];
 
   useEffect(() => {
@@ -47,16 +51,14 @@ const RetroTerminalFooter = () => {
     {
       role: "Owner",
       name: "Nibitor21 Profiles",
-      twitter: "https://x.com/nibitor21",
-      nostr: "npub1d2jmlee240r37v88cp8ndrgy45e6c06m53catmdhdj0zxaunzx3qcpwhsu",
+      nostr: "https://primal.net/p/nprofile1qqsx4fdluu42h3clxrnuqnek35z26vav8ad6guw4akmke83rw7f3rgs0t794d",
       icon: "🔹",
       color: "text-blue-400"
     },
     {
       role: "Developer", 
       name: "DrShift",
-      twitter: "https://x.com/DrShift3",
-      nostr: "npub17c2szua46mc8ndp4grvy4z5465x0qxjge8tqx7vyu0vkqr24y2hssuuy6f",
+      nostr: "https://primal.net/p/nprofile1qqs0v9gpww6adureks65pkz2322a2r8srfyvn4sr0xzw8ktqp42j9tcxwxva2",
       icon: "🔸",
       color: "text-cyan-400"
     }
@@ -109,131 +111,113 @@ const RetroTerminalFooter = () => {
           </div>
         </motion.div>
 
-        {/* Two Column Layout for Desktop, Stacked for Mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        {/* Streamlined Three Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           
-          {/* Left Column - Infrastructure & Team */}
+          {/* Infrastructure */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-4"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {/* Featured Infrastructure */}
-            <div>
-              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
-                <Zap className="h-4 w-4" />
-                <span>🔌 FEATURED_INFRASTRUCTURE</span>
-              </div>
-              
-              <div className="space-y-3">
-                {infrastructureLinks.map((item, index) => (
-                  <div key={index} className="font-mono text-sm">
-                    <div className="flex items-start gap-2">
-                      <span className="text-lg">{item.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <a 
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`${item.color} hover:text-white transition-colors duration-300 font-bold flex items-center gap-1 group`}
-                        >
-                          {item.name}
-                          <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                        </a>
-                        <div className="text-green-300/70 text-xs mt-1 leading-relaxed">
-                          {item.description}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
+              <Zap className="h-4 w-4" />
+              <span>🔌 INFRASTRUCTURE</span>
             </div>
-
-            {/* Team Members */}
-            <div>
-              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
-                <Users className="h-4 w-4" />
-                <span>👥 PROJEKTBETEILIGTE</span>
-              </div>
-              
-              <div className="space-y-3">
-                {teamMembers.map((member, index) => (
-                  <div key={index} className="font-mono text-sm">
-                    <div className="flex items-start gap-2">
-                      <span className="text-lg">{member.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className={`${member.color} font-bold text-xs`}>
-                          {member.role}: {member.name}
-                        </div>
-                        <div className="text-xs mt-1 space-y-1">
-                          <a 
-                            href={member.twitter}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-300 transition-colors duration-300 flex items-center gap-1 group"
-                          >
-                            <span>X:</span>
-                            <span className="truncate">{member.twitter.replace('https://x.com/', '@')}</span>
-                            <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                          </a>
-                          <div className="text-purple-400 text-xs">
-                            <span>Nostr: </span>
-                            <span className="text-purple-300 break-all">{member.nostr.substring(0, 20)}...</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+            
+            <div className="space-y-2">
+              {infrastructureLinks.map((item, index) => (
+                <div key={index} className="font-mono text-xs">
+                  <a 
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${item.color} hover:text-white transition-colors duration-300 font-bold flex items-center gap-1 group`}
+                  >
+                    <span>{item.icon}</span>
+                    <span>{item.name}</span>
+                    <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                  <div className="text-green-300/60 text-xs mt-1 leading-tight">
+                    {item.description}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Right Column - Community & Status */}
+          {/* Team */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-4"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
           >
+            <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              <span>👥 TEAM</span>
+            </div>
+            
+            <div className="space-y-2">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="font-mono text-xs">
+                  <div className={`${member.color} font-bold`}>
+                    {member.icon} {member.role}: {member.name}
+                  </div>
+                  <a 
+                    href={member.nostr}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-400 hover:text-purple-300 transition-colors duration-300 flex items-center gap-1 group mt-1"
+                  >
+                    <span>Nostr Profile</span>
+                    <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Community & Status */}
+          <motion.div 
+            className="space-y-4 md:col-span-2 lg:col-span-1"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
             {/* Community */}
             <div>
-              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
+              <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
                 <MessageCircle className="h-4 w-4" />
                 <span>🗨️ COMMUNITY</span>
               </div>
               
-              <div className="font-mono text-sm">
-                <div className="flex items-start gap-2">
-                  <span className="text-lg">📱</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-yellow-400 font-bold">Telegram: 21Darmstadt</div>
-                    <a 
-                      href="https://t.me/einundzwanzigda"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-yellow-300 hover:text-yellow-200 transition-colors duration-300 text-xs flex items-center gap-1 group mt-1"
-                    >
-                      <span className="truncate">t.me/einundzwanzigda</span>
-                      <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                    </a>
-                  </div>
-                </div>
+              <div className="font-mono text-xs">
+                <div className="text-yellow-400 font-bold">📱 Telegram: 21Darmstadt</div>
+                <a 
+                  href="https://t.me/einundzwanzigda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-yellow-300 hover:text-yellow-200 transition-colors duration-300 flex items-center gap-1 group mt-1"
+                >
+                  <span>t.me/einundzwanzigda</span>
+                  <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
               </div>
             </div>
 
             {/* System Status */}
             <div>
-              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
+              <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
                 <Code className="h-4 w-4" />
-                <span>⚡ SYSTEM_STATUS</span>
+                <span>⚡ STATUS</span>
               </div>
               
-              <div className="font-mono text-sm space-y-2">
+              <div className="font-mono text-xs space-y-1">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-green-400">NETWORK: OPERATIONAL</span>
@@ -252,7 +236,7 @@ const RetroTerminalFooter = () => {
         </div>
 
         {/* ASCII Separator */}
-        <div className="font-mono text-green-400/50 text-xs text-center my-8">
+        <div className="font-mono text-green-400/50 text-xs text-center my-6">
           ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
         </div>
 
@@ -269,7 +253,7 @@ const RetroTerminalFooter = () => {
           </div>
           
           <motion.div 
-            className={`font-mono text-cyan-400 text-base md:text-lg font-bold px-4 py-2 ${glitchEffect ? 'animate-pulse' : ''}`}
+            className={`font-mono text-cyan-400 text-sm md:text-base font-bold px-4 py-2 ${glitchEffect ? 'animate-pulse' : ''}`}
             animate={glitchEffect ? {
               x: [0, -2, 2, -1, 1, 0],
               filter: [
