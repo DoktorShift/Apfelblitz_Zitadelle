@@ -124,7 +124,7 @@ const RetroTerminalFooter = () => {
           >
             <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
               <Zap className="h-4 w-4" />
-              <span>🔌 INFRASTRUCTURE</span>
+              <span>INFRASTRUCTURE</span>
             </div>
             
             <div className="space-y-2">
@@ -197,7 +197,7 @@ const RetroTerminalFooter = () => {
               </div>
               
               <div className="font-mono text-xs">
-                <div className="text-yellow-400 font-bold">📱 Telegram: 21Darmstadt</div>
+                <div className="text-yellow-400 font-bold">Telegram: 21Darmstadt</div>
                 <a 
                   href="https://t.me/einundzwanzigda"
                   target="_blank"
