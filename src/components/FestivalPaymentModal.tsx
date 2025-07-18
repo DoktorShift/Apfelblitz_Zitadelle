@@ -411,10 +411,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                   <h3 className="text-lg font-bold text-green-400 font-mono mb-1 tracking-wider">
                     SCAN_OR_TAP_QR
                   </h3>
-                  <p className="text-green-300/80 text-sm font-mono flex items-center justify-center gap-2">
-                    <Smartphone className="h-4 w-4" />
-                    Instant • Secure • Global
-                  </p>
+                  
                 </motion.div>
               </motion.div>
 
