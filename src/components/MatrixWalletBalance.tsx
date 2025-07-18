@@ -58,17 +58,13 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-2xl text-orange-400"
-              animationDuration={400}
-              triggerDelay={0}
-              repeatInterval={0}
+              disabled={true}
             />
           ) : (
             <MatrixCounterEffect 
               value={balances.btc.toFixed(8)} 
               className="text-2xl font-bold text-orange-400"
-              animationDuration={300}
-              triggerDelay={0}
-              repeatInterval={0}
+              disabled={true}
             />
           )}
         </div>
@@ -82,17 +78,13 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-xl text-yellow-400"
-              animationDuration={400}
-              triggerDelay={0}
-              repeatInterval={0}
+              disabled={true}
             />
           ) : (
             <MatrixCounterEffect 
               value={balances.sats.toLocaleString()} 
               className="text-xl font-bold text-yellow-400"
-              animationDuration={300}
-              triggerDelay={0}
-              repeatInterval={0}
+              disabled={true}
             />
           )}
         </div>
@@ -107,18 +99,14 @@ const MatrixWalletBalance = () => {
             <MatrixCounterEffect 
               value="SYNC..." 
               className="text-xl text-blue-400"
-              animationDuration={400}
-              triggerDelay={0}
-              repeatInterval={0}
+              disabled={true}
             />
           ) : (
             <MatrixCounterEffect 
               value={balances.lightning.toLocaleString()} 
               suffix=" sats"
               className="text-xl font-bold text-blue-400"
-              animationDuration={300}
-              triggerDelay={0}
-              repeatInterval={0}
+              disabled={true}
             />
           )}
         </div>

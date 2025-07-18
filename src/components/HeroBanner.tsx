@@ -49,9 +49,9 @@ const HeroBanner = () => {
           <MatrixText 
             text="WELCOME, PLEB"
             className="text-2xl md:text-3xl tracking-wider mb-4 min-h-0 flex"
-            initialDelay={1000}
+            initialDelay={2000}
             letterInterval={100}
-            letterAnimationDuration={300}
+            letterAnimationDuration={500}
             repeatInterval={0}
           />
         </motion.div>
@@ -67,17 +67,17 @@ const HeroBanner = () => {
             <MatrixText 
               text="TAKE CONTROL."
               className="block text-green-400 mb-2 min-h-0 flex justify-center"
-              initialDelay={3000}
-              letterInterval={80}
-              letterAnimationDuration={300}
+              initialDelay={4000}
+              letterInterval={120}
+              letterAnimationDuration={500}
               repeatInterval={0}
             />
             <MatrixText 
               text="UNPLUG GRACEFULLY."
               className="block text-white min-h-0 flex justify-center"
-              initialDelay={5000}
-              letterInterval={80}
-              letterAnimationDuration={300}
+              initialDelay={6000}
+              letterInterval={120}
+              letterAnimationDuration={500}
               repeatInterval={0}
             />
           </div>

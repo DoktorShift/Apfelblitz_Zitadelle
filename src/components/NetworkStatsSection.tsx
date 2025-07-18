@@ -182,9 +182,6 @@ const NetworkStatsSection = () => {
               <MatrixCounterEffect 
                 value={txCount} 
                 className="text-4xl font-bold text-green-400"
-                animationDuration={300}
-                triggerDelay={0}
-                repeatInterval={0}
               />
               <p className="text-green-300/70 text-sm font-mono mt-2">TOTAL_PROCESSED</p>
             </div>
@@ -208,9 +205,6 @@ const NetworkStatsSection = () => {
                   value={lastPayment.amount} 
                   suffix=" sats"
                   className="text-3xl font-bold text-yellow-400"
-                  animationDuration={300}
-                  triggerDelay={0}
-                  repeatInterval={0}
                 />
                 <p className="text-green-300/70 text-sm font-mono mt-2">
                   {formatTimeAgo(lastPayment.received_at)}
@@ -240,9 +234,6 @@ const NetworkStatsSection = () => {
                 value={totalBalance} 
                 suffix=" sats"
                 className="text-3xl font-bold text-blue-400"
-                animationDuration={300}
-                triggerDelay={0}
-                repeatInterval={0}
               />
               <p className="text-green-300/70 text-sm font-mono mt-2">
                 {balances.length} WALLET{balances.length !== 1 ? 'S' : ''}
@@ -274,9 +265,6 @@ const NetworkStatsSection = () => {
                       value={wallet.balance} 
                       suffix=" sats"
                       className="text-green-400 font-mono font-bold"
-                      animationDuration={200}
-                      triggerDelay={0}
-                      repeatInterval={0}
                     />
                   </div>
                 </div>

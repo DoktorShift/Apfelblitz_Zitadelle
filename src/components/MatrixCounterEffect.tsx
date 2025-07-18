@@ -14,9 +14,7 @@ interface MatrixCounterEffectProps {
   className?: string;
   prefix?: string;
   suffix?: string;
-  animationDuration?: number;
-  triggerDelay?: number;
-  repeatInterval?: number;
+  disabled?: boolean;
 }
 
 const MatrixCounterEffect = ({ 
@@ -24,11 +22,10 @@ const MatrixCounterEffect = ({
   className, 
   prefix = '', 
   suffix = '',
-  animationDuration = 400,
-  triggerDelay = 0,
-  repeatInterval = 0
+  disabled = false
 }: MatrixCounterEffectProps) => {
   const text = `${prefix}${value}${suffix}`;
+  const [previousValue, setPreviousValue] = useState(text);
   const [letters, setLetters] = useState<LetterState[]>(() =>
     text.split("").map((char) => ({
       char,
@@ -47,7 +44,7 @@ const MatrixCounterEffect = ({
       requestAnimationFrame(() => {
         setLetters((prev) => {
           const newLetters = [...prev];
-          if (!newLetters[index].isSpace && !/[^\w]/.test(newLetters[index].char)) {
+          if (!newLetters[index].isSpace) {
             newLetters[index] = {
               ...newLetters[index],
               char: getRandomChar(),
@@ -67,14 +64,14 @@ const MatrixCounterEffect = ({
             };
             return newLetters;
           });
-        }, animationDuration / 4);
+        }, 150);
       });
     },
-    [getRandomChar, text, animationDuration],
+    [getRandomChar, text],
   );
 
   const startAnimation = useCallback(() => {
-    if (isAnimating) return;
+    if (isAnimating || disabled) return;
 
     setIsAnimating(true);
     let currentIndex = 0;
@@ -87,34 +84,45 @@ const MatrixCounterEffect = ({
 
       animateLetter(currentIndex);
       currentIndex++;
-      setTimeout(animate, animationDuration / text.length);
+      setTimeout(animate, 50);
     };
 
-    setTimeout(animate, triggerDelay);
-  }, [animateLetter, text, isAnimating, animationDuration, triggerDelay]);
+    animate();
+  }, [animateLetter, text, isAnimating, disabled]);
 
   useEffect(() => {
-    setLetters(
-      text.split("").map((char) => ({
-        char,
-        isMatrix: false,
-        isSpace: char === " ",
-      }))
-    );
-    startAnimation();
-    
-    // Set up repeat interval if specified
-    if (repeatInterval > 0) {
-      const interval = setInterval(startAnimation, repeatInterval);
-      return () => clearInterval(interval);
+    // Only animate if the value actually changed
+    if (text !== previousValue && !disabled) {
+      setPreviousValue(text);
+      
+      // Update letters array
+      setLetters(
+        text.split("").map((char) => ({
+          char,
+          isMatrix: false,
+          isSpace: char === " ",
+        }))
+      );
+      
+      // Start animation
+      startAnimation();
+    } else if (disabled) {
+      // If disabled, just update letters without animation
+      setLetters(
+        text.split("").map((char) => ({
+          char,
+          isMatrix: false,
+          isSpace: char === " ",
+        }))
+      );
     }
-  }, [value, text, startAnimation, repeatInterval]);
+  }, [value, text, previousValue, startAnimation, disabled]);
 
   const motionVariants = useMemo(
     () => ({
       matrix: {
         color: "#00ff00",
-        textShadow: "0 2px 4px rgba(0, 255, 0, 0.5)",
+        textShadow: "0 1px 2px rgba(0, 255, 0, 0.3)",
       },
       normal: {
         color: "currentColor",
@@ -134,7 +142,7 @@ const MatrixCounterEffect = ({
           animate={letter.isMatrix ? "matrix" : "normal"}
           variants={motionVariants}
           transition={{
-            duration: 0.15,
+            duration: 0.1,
             ease: "easeInOut",
           }}
         >
