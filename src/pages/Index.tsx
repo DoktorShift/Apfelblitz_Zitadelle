@@ -4,10 +4,17 @@ import { motion } from 'framer-motion';
 import HeroBanner from '@/components/HeroBanner';
 import NetworkStatsSection from '@/components/NetworkStatsSection';
 import MatrixAppleChoice from '@/components/MatrixAppleChoice';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Index = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-black text-green-400 overflow-x-hidden relative">
+      {/* Language Switcher */}
+      <LanguageSwitcher />
+
       {/* Matrix Rain Background */}
       <div className="fixed inset-0 opacity-10 pointer-events-none">
         <div className="matrix-rain"></div>
@@ -41,11 +48,10 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-green-400">
-                THE CHOICE IS YOURS
+                {t('theChoiceIsYours')}
               </h2>
               <p className="text-green-300/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                Both paths lead to enlightenment. Both apples are perfect. 
-                The real choice isn't which one to take... but how much value you give.
+                {t('choiceDescription')}
               </p>
             </motion.div>
             <MatrixAppleChoice />
@@ -71,7 +77,7 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <h3 className="text-4xl md:text-5xl font-bold text-green-400 mb-8">
-                SOUND MONEY, SOUND CHOICES
+                {t('soundMoneySoundChoices')}
               </h3>
               
               <div className="matrix-terminal p-8 md:p-12 mb-12">
@@ -82,8 +88,7 @@ const Index = () => {
                   transition={{ duration: 1, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  In a world of infinite possibilities, you chose to be here. 
-                  You chose to pay with Bitcoin. You chose to support value-for-value.
+                  {t('infinitePossibilities')}
                 </motion.p>
                 
                 <motion.p 
@@ -93,7 +98,7 @@ const Index = () => {
                   transition={{ duration: 1, delay: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  The real choice was never about the apples...
+                  {t('realChoice')}
                 </motion.p>
                 
                 <motion.p 
@@ -103,7 +108,7 @@ const Index = () => {
                   transition={{ duration: 1, delay: 0.9 }}
                   viewport={{ once: true }}
                 >
-                  It was about choosing sound money.
+                  {t('aboutSoundMoney')}
                 </motion.p>
               </div>
               
@@ -114,10 +119,10 @@ const Index = () => {
                 transition={{ duration: 0.8, delay: 1.2 }}
                 viewport={{ once: true }}
               >
-                <span className="matrix-pill">🍎 ORGANIC APPLES</span>
-                <span className="matrix-pill">⚡ LIGHTNING NETWORK</span>
-                <span className="matrix-pill">₿ SOUND MONEY</span>
-                <span className="matrix-pill">🌟 VALUE FOR VALUE</span>
+                <span className="matrix-pill">{t('organicApples')}</span>
+                <span className="matrix-pill">{t('lightningNetwork')}</span>
+                <span className="matrix-pill">{t('soundMoney')}</span>
+                <span className="matrix-pill">{t('valueForValue')}</span>
               </motion.div>
             </motion.div>
           </div>
