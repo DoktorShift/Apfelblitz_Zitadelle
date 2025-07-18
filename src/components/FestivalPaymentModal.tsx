@@ -307,15 +307,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                   {selectedApple} • Pay What You Want
                 </p>
 
-                <div className="flex flex-wrap items-center justify-center gap-2">
-                  <Badge className="bg-green-900/60 text-green-300 border-green-400/60 font-mono text-xs shadow-[0_0_8px_rgba(34,197,94,0.3)]">
-                    <QrCode className="h-3 w-3 mr-1" />
-                    INSTANT
-                  </Badge>
-                  <Badge className="bg-cyan-900/60 text-cyan-300 border-cyan-400/60 font-mono text-xs shadow-[0_0_8px_rgba(34,211,238,0.3)]">
-                    GLOBAL
-                  </Badge>
-                </div>
+                
               </motion.div>
             </div>
 
