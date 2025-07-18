@@ -52,14 +52,14 @@ const RetroTerminalFooter = () => {
       role: "Owner",
       name: "Nibitor21",
       nostr: "https://primal.net/p/nprofile1qqsx4fdluu42h3clxrnuqnek35z26vav8ad6guw4akmke83rw7f3rgs0t794d",
-      icon: "🔹",
+      icon: "◾️",
       color: "text-blue-400"
     },
     {
       role: "Developer", 
       name: "DrShift",
       nostr: "https://primal.net/p/nprofile1qqs0v9gpww6adureks65pkz2322a2r8srfyvn4sr0xzw8ktqp42j9tcxwxva2",
-      icon: "🔸",
+      icon: "◾️",
       color: "text-cyan-400"
     }
   ];
