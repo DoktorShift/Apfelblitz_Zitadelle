@@ -47,16 +47,18 @@ const MatrixTransactionCounter = () => {
               <MatrixCounterEffect 
                 value="LOADING..." 
                 className="text-4xl"
-                duration={5000}
-                delay={2}
+                animationDuration={1500}
+                triggerDelay={300}
+                repeatInterval={10000}
               />
             </div>
           ) : (
             <MatrixCounterEffect 
               value={count.toLocaleString()} 
               className="text-4xl font-bold text-green-400"
-              duration={5000}
-              delay={2000}
+              animationDuration={800}
+              triggerDelay={500}
+              repeatInterval={25000}
             />
           )}
           

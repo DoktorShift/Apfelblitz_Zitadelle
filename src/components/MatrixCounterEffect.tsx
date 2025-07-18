@@ -14,8 +14,9 @@ interface MatrixCounterEffectProps {
   className?: string;
   prefix?: string;
   suffix?: string;
-  duration?: number;
-  delay?: number;
+  animationDuration?: number;
+  triggerDelay?: number;
+  repeatInterval?: number;
 }
 
 const MatrixCounterEffect = ({ 
@@ -23,8 +24,9 @@ const MatrixCounterEffect = ({
   className, 
   prefix = '', 
   suffix = '',
-  duration = 2500,
-  delay = 5000
+  animationDuration = 800,
+  triggerDelay = 0,
+  repeatInterval = 15000
 }: MatrixCounterEffectProps) => {
   const text = `${prefix}${value}${suffix}`;
   const [letters, setLetters] = useState<LetterState[]>(() =>
@@ -65,10 +67,10 @@ const MatrixCounterEffect = ({
             };
             return newLetters;
           });
-        }, duration / 3);
+        }, animationDuration / 4);
       });
     },
-    [getRandomChar, text, duration],
+    [getRandomChar, text, animationDuration],
   );
 
   const startAnimation = useCallback(() => {
@@ -85,11 +87,11 @@ const MatrixCounterEffect = ({
 
       animateLetter(currentIndex);
       currentIndex++;
-      setTimeout(animate, duration / text.length);
+      setTimeout(animate, animationDuration / text.length);
     };
 
-    setTimeout(animate, delay);
-  }, [animateLetter, text, isAnimating, duration, delay]);
+    setTimeout(animate, triggerDelay);
+  }, [animateLetter, text, isAnimating, animationDuration, triggerDelay]);
 
   useEffect(() => {
     setLetters(
@@ -100,7 +102,13 @@ const MatrixCounterEffect = ({
       }))
     );
     startAnimation();
-  }, [value, text, startAnimation]);
+    
+    // Set up repeat interval if specified
+    if (repeatInterval > 0) {
+      const interval = setInterval(startAnimation, repeatInterval);
+      return () => clearInterval(interval);
+    }
+  }, [value, text, startAnimation, repeatInterval]);
 
   const motionVariants = useMemo(
     () => ({
@@ -126,7 +134,7 @@ const MatrixCounterEffect = ({
           animate={letter.isMatrix ? "matrix" : "normal"}
           variants={motionVariants}
           transition={{
-            duration: 0.2,
+            duration: 0.15,
             ease: "easeInOut",
           }}
         >
