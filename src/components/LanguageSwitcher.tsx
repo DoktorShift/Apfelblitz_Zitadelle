@@ -36,7 +36,7 @@ const LanguageSwitcher = () => {
             <div className="flex items-center gap-2">
               <Globe className="h-4 w-4 text-green-400" />
               <span className="text-green-400 font-mono text-xs font-bold">
-                {t('changeReality')}
+                {t('common:changeReality')}
               </span>
             </div>
             
