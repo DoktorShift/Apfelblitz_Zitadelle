@@ -5,9 +5,9 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     common: {
-      // Network Stats
+      // Network Stats - Keep original English
       "liveNetworkStatus": "LIVE_NETWORK_STATUS",
-      "txCount": "TX_COUNT",
+      "txCount": "TX_COUNT", 
       "totalProcessed": "TOTAL_PROCESSED",
       "lastPayment": "LAST_PAYMENT",
       "totalBalance": "TOTAL_BALANCE",
@@ -22,21 +22,21 @@ const resources = {
       "wallet": "WALLET",
       "wallets": "WALLETS",
       
-      // Apple Choice
+      // Apple Choice - Keep original English
       "theChoiceIsYours": "THE CHOICE IS YOURS",
       "choiceDescription": "Both paths lead to enlightenment. Both apples are perfect. The real choice isn't which one to take... but how much value you give.",
       "redApple": "RED_APPLE",
-      "passionPath": "PASSION_PATH",
-      "redQuote": "Sweet, crisp, and awakening - a taste of pure energy",
+      "passionPath": "PASSION_PATH", 
+      "redQuote": "\"Sweet, crisp, and awakening - a taste of pure energy\"",
       "enhancesFocus": "ENHANCES_FOCUS",
       "greenApple": "GREEN_APPLE",
       "wisdomPath": "WISDOM_PATH",
-      "greenQuote": "Tart, refreshing, and enlightening - nature's perfect balance",
+      "greenQuote": "\"Tart, refreshing, and enlightening - nature's perfect balance\"",
       "amplifiesClarity": "AMPLIFIES_CLARITY",
       "chooseApple": "CHOOSE_APPLE",
       "effect": "EFFECT",
       
-      // Payment Modal
+      // Payment Modal - Keep original English
       "lightningPayment": "LIGHTNING_PAYMENT",
       "payWhatYouWant": "Pay What You Want",
       "scanOrTapQr": "SCAN_OR_TAP_QR",
@@ -46,55 +46,55 @@ const resources = {
       "generating": "GENERATING...",
       "qrFailed": "QR_FAILED",
       "retry": "RETRY",
-      "supportDrShift": "20% support to DrShift.dev",
+      "supportDrShift": "20% supports DrShift.dev",
       "lightningDev": "Lightning & Nostr development",
       "pwrdByAurora": "pwrd by Aurora",
       "securePayment": "Secure Lightning Network Payment",
       
-      // Wallet Balance
+      // Wallet Balance - Keep original English
       "walletBalance": "WALLET_BALANCE",
-      "lightning": "LIGHTNING",
+      "lightning": "LIGHTNING", 
       "sync": "SYNC...",
       
-      // Transaction components
+      // Transaction components - Keep original English
       "liveTransactions": "Live Transaktionen",
-      "waitingForFirst": "Warte auf erste Lightning-Zahlung...",
-      "justNow": "Gerade eben",
-      "minAgo": "Min",
-      "today": "Heute",
-      "yesterday": "Gestern",
-      "thisWeek": "Diese Woche",
-      "thisMonth": "Diesen Monat",
-      "before": "vor",
-      "page": "Seite",
-      "of": "von",
-      "back": "Zurück",
-      "next": "Weiter",
-      "counterNotAvailable": "Counter nicht verfügbar",
-      "backendConnectionFailed": "Backend-Verbindung fehlgeschlagen",
-      "activeTransactions": "Aktive Transaktionen",
+      "waitingForFirst": "Waiting for first Lightning payment...",
+      "justNow": "just now",
+      "minAgo": "min ago",
+      "today": "Today",
+      "yesterday": "Yesterday", 
+      "thisWeek": "This week",
+      "thisMonth": "This month",
+      "before": "before",
+      "page": "Page",
+      "of": "of",
+      "back": "Back",
+      "next": "Next",
+      "counterNotAvailable": "Counter not available",
+      "backendConnectionFailed": "Backend connection failed",
+      "activeTransactions": "Active Transactions",
       "autoRefresh": "Auto-refresh every 30s • Last update",
       
-      // Philosophical section
+      // Philosophical section - Keep original English
       "soundMoneySoundChoices": "SOUND MONEY, SOUND CHOICES",
       "infinitePossibilities": "In a world of infinite possibilities, you chose to be here. You chose to pay with Bitcoin. You chose to support value-for-value.",
       "realChoice": "The real choice was never about the apples...",
       "aboutSoundMoney": "It was about choosing sound money.",
       "organicApples": "🍎 ORGANIC APPLES",
-      "lightningNetwork": "⚡ LIGHTNING NETWORK",
+      "lightningNetwork": "⚡ LIGHTNING NETWORK", 
       "soundMoney": "₿ SOUND MONEY",
       "valueForValue": "🌟 VALUE FOR VALUE",
       
-      // Language switcher
+      // Language switcher - Keep original English
       "changeReality": "CHANGE_REALITY",
-      "selectLanguage": "SELECT_LANGUAGE",
+      "selectLanguage": "SELECT_LANGUAGE", 
       "english": "ENGLISH",
       "german": "DEUTSCH"
     }
   },
   de: {
     common: {
-      // Network Stats
+      // Network Stats - German translations
       "liveNetworkStatus": "LIVE_NETZWERK_STATUS",
       "txCount": "TX_ANZAHL",
       "totalProcessed": "GESAMT_VERARBEITET",
@@ -111,7 +111,7 @@ const resources = {
       "wallet": "WALLET",
       "wallets": "WALLETS",
       
-      // Apple Choice
+      // Apple Choice - German translations
       "theChoiceIsYours": "DIE WAHL LIEGT BEI DIR",
       "choiceDescription": "Beide Wege führen zur Erleuchtung. Beide Äpfel sind perfekt. Die wahre Wahl ist nicht, welchen du nimmst... sondern wie viel Wert du gibst.",
       "redApple": "ROTER_APFEL",
@@ -125,7 +125,7 @@ const resources = {
       "chooseApple": "APFEL_WÄHLEN",
       "effect": "EFFEKT",
       
-      // Payment Modal
+      // Payment Modal - German translations
       "lightningPayment": "LIGHTNING_ZAHLUNG",
       "payWhatYouWant": "Zahle was du willst",
       "scanOrTapQr": "QR_SCANNEN_ODER_TIPPEN",
@@ -140,14 +140,14 @@ const resources = {
       "pwrdByAurora": "unterstützt von Aurora",
       "securePayment": "Sichere Lightning Network Zahlung",
       
-      // Wallet Balance
+      // Wallet Balance - German translations
       "walletBalance": "WALLET_GUTHABEN",
       "lightning": "LIGHTNING",
       "sync": "SYNC...",
       
-      // Transaction components
+      // Transaction components - German translations
       "liveTransactions": "Live Transaktionen",
-      "waitingForFirst": "Warte auf erste Lightning-Zahlung...",
+      "waitingForFirst": "Warte auf erste Lightning-Zahlung...", 
       "justNow": "Gerade eben",
       "minAgo": "Min",
       "today": "Heute",
@@ -164,7 +164,7 @@ const resources = {
       "activeTransactions": "Aktive Transaktionen",
       "autoRefresh": "Auto-Aktualisierung alle 30s • Letzte Aktualisierung",
       
-      // Philosophical section
+      // Philosophical section - German translations
       "soundMoneySoundChoices": "SOLIDES GELD, SOLIDE ENTSCHEIDUNGEN",
       "infinitePossibilities": "In einer Welt unendlicher Möglichkeiten hast du dich entschieden, hier zu sein. Du hast dich entschieden, mit Bitcoin zu zahlen. Du hast dich für Value-for-Value entschieden.",
       "realChoice": "Die wahre Wahl ging nie um die Äpfel...",
@@ -174,7 +174,7 @@ const resources = {
       "soundMoney": "₿ SOLIDES GELD",
       "valueForValue": "🌟 VALUE FOR VALUE",
       
-      // Language switcher
+      // Language switcher - German translations
       "changeReality": "REALITÄT_ÄNDERN",
       "selectLanguage": "SPRACHE_WÄHLEN",
       "english": "ENGLISCH",
