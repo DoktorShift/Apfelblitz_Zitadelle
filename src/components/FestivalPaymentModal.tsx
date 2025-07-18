@@ -52,7 +52,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
     setQrError(false);
     
     try {
-      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodeURIComponent(lightningUrl)}&bgcolor=000000&color=00ff00&margin=8&ecc=M&format=png`;
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodeURIComponent(lightningUrl)}&bgcolor=f8f9fa&color=2d3748&margin=8&ecc=M&format=png`;
       
       // Test if the QR code URL is accessible
       const img = new Image();
@@ -197,28 +197,28 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
         aria-labelledby="payment-modal-title"
         aria-describedby="payment-modal-description"
       >
-        {/* Enhanced Matrix Rain Background - Optimized for mobile */}
+        {/* Reduced Matrix Rain Background - Performance optimized */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(80)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute text-green-400/20 font-mono text-xs select-none pointer-events-none"
+              className="absolute text-green-400/10 font-mono text-xs select-none pointer-events-none"
               animate={{
                 y: [0, window.innerHeight + 50],
-                opacity: [0, 0.8, 0.8, 0],
+                opacity: [0, 0.3, 0],
               }}
               transition={{
-                duration: Math.random() * 6 + 6,
+                duration: Math.random() * 8 + 8,
                 repeat: Infinity,
-                delay: Math.random() * 6,
+                delay: Math.random() * 8,
                 ease: "linear",
               }}
               style={{
                 left: `${Math.random() * 100}%`,
               }}
             >
-              {Array.from({ length: Math.floor(Math.random() * 12) + 8 }, (_, j) => (
-                <div key={j} style={{ opacity: Math.max(0, 1 - j * 0.1) }}>
+              {Array.from({ length: Math.floor(Math.random() * 6) + 4 }, (_, j) => (
+                <div key={j} style={{ opacity: Math.max(0, 1 - j * 0.2) }}>
                   {String.fromCharCode(0x30A0 + Math.random() * 96)}
                 </div>
               ))}
@@ -243,28 +243,14 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
         >
           {/* Holographic Border Effects */}
           <div className="absolute inset-0 rounded-2xl">
-            <motion.div 
-              className="absolute inset-0 rounded-2xl border-2 border-green-400/60 shadow-[0_0_30px_rgba(34,197,94,0.4)]"
-              animate={{
-                boxShadow: [
-                  "0_0_30px_rgba(34,197,94,0.4)",
-                  "0_0_50px_rgba(34,197,94,0.6)",
-                  "0_0_30px_rgba(34,197,94,0.4)"
-                ]
-              }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
+            <div className="absolute inset-0 rounded-2xl border-2 border-green-400/60 shadow-[0_0_30px_rgba(34,197,94,0.4)]" />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/5 via-cyan-400/10 to-green-400/5 blur-xl animate-pulse"></div>
           </div>
 
           <div className="relative bg-gradient-to-br from-black via-green-950/20 to-black border-2 border-green-400/50 backdrop-blur-xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(34,197,94,0.3)]">
             
             {/* Animated Top Border */}
-            <motion.div
-              className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent"
-              animate={{ x: ["-100%", "100%"] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-50" />
 
             {/* Header - Compact for mobile */}
             <div className="relative p-4 pb-2">
@@ -291,7 +277,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                 >
                   <motion.div
                     animate={{ rotate: [0, 360] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
                   >
                     <Zap className="h-5 w-5 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" />
                   </motion.div>
@@ -326,11 +312,6 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                         <Loader2 className="h-6 w-6 text-green-400 animate-spin" />
                         <span className="text-green-400 font-mono text-xs">GENERATING...</span>
                       </div>
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/10 to-transparent"
-                        animate={{ x: ["-100%", "100%"] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                      />
                     </div>
                   ) : qrError ? (
                     <div className="w-64 h-64 bg-red-900/20 border-2 border-red-400/40 rounded-xl flex items-center justify-center">
@@ -364,7 +345,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                         }
                       }}
                     >
-                      <div className="bg-white p-3 rounded-2xl shadow-[0_0_25px_rgba(34,197,94,0.4)] border-2 border-green-400/20 group-hover:border-green-400/60 transition-all duration-300 group-hover:shadow-[0_0_35px_rgba(34,197,94,0.6)]">
+                      <div className="bg-gray-100 p-3 rounded-2xl shadow-[0_0_25px_rgba(100,116,139,0.4)] border-2 border-gray-400/30 group-hover:border-gray-500/60 transition-all duration-300 group-hover:shadow-[0_0_35px_rgba(100,116,139,0.6)]">
                         <img
                           src={qrCodeUrl}
                           alt="Lightning Payment QR Code - Tap to copy"
@@ -384,20 +365,11 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                         </motion.div>
                       </div>
 
-                      {/* Animated Scanning Corners */}
-                      {[
-                        { position: "-top-2 -left-2", border: "border-l-4 border-t-4", corner: "rounded-tl-lg" },
-                        { position: "-top-2 -right-2", border: "border-r-4 border-t-4", corner: "rounded-tr-lg" },
-                        { position: "-bottom-2 -left-2", border: "border-l-4 border-b-4", corner: "rounded-bl-lg" },
-                        { position: "-bottom-2 -right-2", border: "border-r-4 border-b-4", corner: "rounded-br-lg" }
-                      ].map((corner, index) => (
-                        <motion.div
-                          key={index}
-                          className={`absolute ${corner.position} w-6 h-6 ${corner.border} border-green-400 ${corner.corner}`}
-                          animate={{ opacity: [0.5, 1, 0.5] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
-                        />
-                      ))}
+                      {/* Static Scanning Corners */}
+                      <div className="absolute -top-2 -left-2 w-6 h-6 border-l-4 border-t-4 border-green-400 rounded-tl-lg opacity-70" />
+                      <div className="absolute -top-2 -right-2 w-6 h-6 border-r-4 border-t-4 border-green-400 rounded-tr-lg opacity-70" />
+                      <div className="absolute -bottom-2 -left-2 w-6 h-6 border-l-4 border-b-4 border-green-400 rounded-bl-lg opacity-70" />
+                      <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-4 border-b-4 border-green-400 rounded-br-lg opacity-70" />
                     </motion.div>
                   )}
                 </div>
@@ -428,9 +400,7 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                   disabled={qrLoading || qrError}
                   aria-label="Open Lightning wallet to make payment"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <Wallet className="h-5 w-5 mr-3 relative z-10" />
                   <span className="relative z-10">OPEN_WALLET</span>
                   <ExternalLink className="h-4 w-4 ml-3 relative z-10" />
@@ -467,12 +437,10 @@ const FestivalPaymentModal: React.FC<FestivalPaymentModalProps> = ({
                   className="inline-flex items-center gap-2 text-green-400/70 hover:text-green-400 text-xs font-mono transition-colors duration-300 hover:scale-105 transform"
                 >
                   <span>pwrd by</span>
-                  <motion.img 
+                  <img 
                     src="/aurora_logo.png" 
                     alt="Aurora" 
                     className="h-4 w-4 opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
                   />
                   <span className="hover:underline">Aurora</span>
                 </a>
