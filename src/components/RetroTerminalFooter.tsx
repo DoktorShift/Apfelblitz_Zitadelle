@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Zap, Users, MessageCircle, Code, Globe } from 'lucide-react';
 
 const RetroTerminalFooter = () => {
-  const [matrixSlogan, setMatrixSlogan] = useState('');
+  const [currentSlogan, setCurrentSlogan] = useState(0);
+  const [glitchEffect, setGlitchEffect] = useState(false);
 
   const slogans = [
     "If you can read this, you're the resistance.",
@@ -12,9 +13,17 @@ const RetroTerminalFooter = () => {
   ];
 
   useEffect(() => {
-    // Randomly select a slogan on component mount
-    const randomSlogan = slogans[Math.floor(Math.random() * slogans.length)];
-    setMatrixSlogan(randomSlogan);
+    const interval = setInterval(() => {
+      // Trigger glitch effect
+      setGlitchEffect(true);
+      
+      setTimeout(() => {
+        setCurrentSlogan((prev) => (prev + 1) % slogans.length);
+        setGlitchEffect(false);
+      }, 300);
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const infrastructureLinks = [
@@ -100,175 +109,204 @@ const RetroTerminalFooter = () => {
           </div>
         </motion.div>
 
-        {/* Matrix Slogan */}
-        <motion.div 
-          className="text-center mb-10"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <div className="font-mono text-green-400 text-sm mb-2">
-            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-          </div>
-          <div className="font-mono text-cyan-400 text-base md:text-lg font-bold px-4 py-2">
-            "{matrixSlogan}"
-          </div>
-          <div className="font-mono text-green-400 text-sm">
-            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-          </div>
-        </motion.div>
-
-        {/* Featured Infrastructure */}
-        <motion.div 
-          className="mb-10"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
-            <Zap className="h-4 w-4" />
-            <span>🔌 FEATURED_INFRASTRUCTURE</span>
-          </div>
+        {/* Two Column Layout for Desktop, Stacked for Mobile */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           
-          <div className="space-y-3">
-            {infrastructureLinks.map((item, index) => (
-              <div key={index} className="font-mono text-sm">
-                <div className="flex items-start gap-2 mb-1">
-                  <span className="text-lg">{item.icon}</span>
-                  <div className="flex-1">
-                    <a 
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${item.color} hover:text-white transition-colors duration-300 font-bold flex items-center gap-1 group`}
-                    >
-                      {item.name}
-                      <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                    <div className="text-green-300/70 text-xs mt-1 leading-relaxed">
-                      {item.description}
-                    </div>
-                    <div className="text-green-400/50 text-xs mt-1 break-all">
-                      └─ {item.url}
+          {/* Left Column - Infrastructure & Team */}
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {/* Featured Infrastructure */}
+            <div>
+              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
+                <Zap className="h-4 w-4" />
+                <span>🔌 FEATURED_INFRASTRUCTURE</span>
+              </div>
+              
+              <div className="space-y-3">
+                {infrastructureLinks.map((item, index) => (
+                  <div key={index} className="font-mono text-sm">
+                    <div className="flex items-start gap-2">
+                      <span className="text-lg">{item.icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <a 
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`${item.color} hover:text-white transition-colors duration-300 font-bold flex items-center gap-1 group`}
+                        >
+                          {item.name}
+                          <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                        </a>
+                        <div className="text-green-300/70 text-xs mt-1 leading-relaxed">
+                          {item.description}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {index < infrastructureLinks.length - 1 && (
-                  <div className="text-green-400/30 text-xs ml-6">│</div>
-                )}
+                ))}
               </div>
-            ))}
-          </div>
-        </motion.div>
+            </div>
+
+            {/* Team Members */}
+            <div>
+              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span>👥 PROJEKTBETEILIGTE</span>
+              </div>
+              
+              <div className="space-y-3">
+                {teamMembers.map((member, index) => (
+                  <div key={index} className="font-mono text-sm">
+                    <div className="flex items-start gap-2">
+                      <span className="text-lg">{member.icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className={`${member.color} font-bold text-xs`}>
+                          {member.role}: {member.name}
+                        </div>
+                        <div className="text-xs mt-1 space-y-1">
+                          <a 
+                            href={member.twitter}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-400 hover:text-blue-300 transition-colors duration-300 flex items-center gap-1 group"
+                          >
+                            <span>X:</span>
+                            <span className="truncate">{member.twitter.replace('https://x.com/', '@')}</span>
+                            <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                          </a>
+                          <div className="text-purple-400 text-xs">
+                            <span>Nostr: </span>
+                            <span className="text-purple-300 break-all">{member.nostr.substring(0, 20)}...</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Community & Status */}
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            {/* Community */}
+            <div>
+              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
+                <MessageCircle className="h-4 w-4" />
+                <span>🗨️ COMMUNITY</span>
+              </div>
+              
+              <div className="font-mono text-sm">
+                <div className="flex items-start gap-2">
+                  <span className="text-lg">📱</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-yellow-400 font-bold">Telegram: 21Darmstadt</div>
+                    <a 
+                      href="https://t.me/einundzwanzigda"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-yellow-300 hover:text-yellow-200 transition-colors duration-300 text-xs flex items-center gap-1 group mt-1"
+                    >
+                      <span className="truncate">t.me/einundzwanzigda</span>
+                      <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* System Status */}
+            <div>
+              <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
+                <Code className="h-4 w-4" />
+                <span>⚡ SYSTEM_STATUS</span>
+              </div>
+              
+              <div className="font-mono text-sm space-y-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-green-400">NETWORK: OPERATIONAL</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                  <span className="text-yellow-400">LIGHTNING: ACTIVE</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                  <span className="text-blue-400">MATRIX: CONNECTED</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* ASCII Separator */}
         <div className="font-mono text-green-400/50 text-xs text-center my-8">
-          ─────────────────────────────────────────────────────────────
+          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
         </div>
 
-        {/* Team Members */}
+        {/* Matrix Slogan - Last Element with Glitch Effect */}
         <motion.div 
-          className="mb-10"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
-            <Users className="h-4 w-4" />
-            <span>👥 PROJEKTBETEILIGTE</span>
-          </div>
-          
-          <div className="space-y-4">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="font-mono text-sm">
-                <div className="flex items-start gap-2">
-                  <span className="text-lg">{member.icon}</span>
-                  <div className="flex-1">
-                    <div className={`${member.color} font-bold`}>
-                      {member.role}: {member.name}
-                    </div>
-                    <div className="text-xs mt-2 space-y-1">
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                        <a 
-                          href={member.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-400 hover:text-blue-300 transition-colors duration-300 flex items-center gap-1 group"
-                        >
-                          <span>Twitter:</span>
-                          <span className="break-all">{member.twitter}</span>
-                          <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                        </a>
-                      </div>
-                      <div className="text-purple-400 break-all">
-                        <span>Nostr: </span>
-                        <span className="text-purple-300">{member.nostr}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {index < teamMembers.length - 1 && (
-                  <div className="text-green-400/30 text-xs ml-6 mt-2">│</div>
-                )}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Community */}
-        <motion.div 
-          className="mb-10"
+          className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="font-mono text-green-400 text-sm mb-4 flex items-center gap-2">
-            <MessageCircle className="h-4 w-4" />
-            <span>🗨️ COMMUNITY</span>
+          <div className="font-mono text-green-400 text-sm mb-2">
+            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
           </div>
           
-          <div className="font-mono text-sm">
-            <div className="flex items-start gap-2">
-              <span className="text-lg">📱</span>
-              <div className="flex-1">
-                <div className="text-yellow-400 font-bold">Telegram: 21Darmstadt</div>
-                <a 
-                  href="https://t.me/einundzwanzigda"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-yellow-300 hover:text-yellow-200 transition-colors duration-300 text-xs flex items-center gap-1 group mt-1"
-                >
-                  <span className="break-all">https://t.me/einundzwanzigda</span>
-                  <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                </a>
-              </div>
-            </div>
+          <motion.div 
+            className={`font-mono text-cyan-400 text-base md:text-lg font-bold px-4 py-2 ${glitchEffect ? 'animate-pulse' : ''}`}
+            animate={glitchEffect ? {
+              x: [0, -2, 2, -1, 1, 0],
+              filter: [
+                "hue-rotate(0deg)",
+                "hue-rotate(90deg)", 
+                "hue-rotate(180deg)",
+                "hue-rotate(270deg)",
+                "hue-rotate(0deg)"
+              ],
+              textShadow: [
+                "0 0 0 transparent",
+                "2px 0 0 #ff0000, -2px 0 0 #00ffff",
+                "0 0 0 transparent"
+              ]
+            } : {}}
+            transition={{ duration: 0.3 }}
+          >
+            "{slogans[currentSlogan]}"
+          </motion.div>
+          
+          <div className="font-mono text-green-400 text-sm">
+            ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
           </div>
-        </motion.div>
-
-        {/* ASCII Footer */}
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="font-mono text-green-400/50 text-xs leading-tight">
-            <div>▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
-            <div className="py-2 text-green-400">
-              <div className="flex items-center justify-center gap-2 text-xs">
-                <Code className="h-3 w-3" />
-                <span>SYSTEM_STATUS: OPERATIONAL</span>
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          
+          {/* Network Error Effect */}
+          {glitchEffect && (
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.3, 0] }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="font-mono text-red-400 text-xs absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                [NETWORK_ERROR_0x4A2F] SIGNAL_INTERFERENCE_DETECTED
               </div>
-            </div>
-            <div>▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
-          </div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </footer>
