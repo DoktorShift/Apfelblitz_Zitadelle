@@ -105,7 +105,7 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
         />
 
         {/* Central Content */}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 text-center px-4">
           {/* Main Recalibration Message */}
           <motion.div
             className="mb-8"
@@ -115,16 +115,16 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
             }}
             transition={{ duration: 0.3, repeat: 10 }}
           >
-            <h1 className="text-4xl md:text-6xl font-black text-green-400 font-mono mb-4 glitch-text">
+            <h1 className="text-2xl md:text-6xl font-black text-green-400 font-mono mb-4 glitch-text">
               REALITY_RECALIBRATION
             </h1>
-            <div className="text-xl md:text-2xl text-green-300 font-mono">
+            <div className="text-sm md:text-2xl text-green-300 font-mono">
               INITIATED_FOR: {targetLanguage === 'de' ? 'DEUTSCH' : 'ENGLISH'}
             </div>
           </motion.div>
 
           {/* Progress Messages */}
-          <div className="space-y-4 min-h-[120px] flex flex-col justify-center">
+          <div className="space-y-3 min-h-[80px] md:min-h-[120px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={phase}
@@ -132,14 +132,14 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 1.2 }}
                 transition={{ duration: 0.3 }}
-                className="text-lg md:text-xl text-cyan-400 font-mono font-bold"
+                className="text-xs md:text-xl text-cyan-400 font-mono font-bold px-2"
               >
                 {recalibrationMessages[phase]}
               </motion.div>
             </AnimatePresence>
 
             {/* Progress Bar */}
-            <div className="w-64 h-2 bg-green-900/30 rounded-full mx-auto overflow-hidden border border-green-500/30">
+            <div className="w-48 md:w-64 h-1.5 md:h-2 bg-green-900/30 rounded-full mx-auto overflow-hidden border border-green-500/30">
               <motion.div
                 className="h-full bg-gradient-to-r from-green-500 to-cyan-400 rounded-full"
                 initial={{ width: "0%" }}
@@ -150,17 +150,17 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
 
             {/* Binary Code Stream */}
             <motion.div
-              className="text-green-400/50 font-mono text-xs tracking-wider"
+              className="text-green-400/50 font-mono text-xs md:text-xs tracking-wider px-2"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 0.2, repeat: Infinity }}
             >
-              {Array.from({ length: 40 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
+              {Array.from({ length: window.innerWidth < 768 ? 25 : 40 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
             </motion.div>
           </div>
 
           {/* Warning Message */}
           <motion.div
-            className="mt-8 text-yellow-400 font-mono text-sm"
+            className="mt-4 md:mt-8 text-yellow-400 font-mono text-xs md:text-sm px-2"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 1, repeat: Infinity }}
           >
