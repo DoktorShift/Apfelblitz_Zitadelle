@@ -93,7 +93,7 @@ const HeroBanner = () => {
           <div className="inline-flex items-center gap-3 matrix-terminal px-6 py-3">
             <Zap className="h-5 w-5 text-yellow-400 animate-pulse" />
             <span className="text-green-400 font-mono text-sm font-bold">
-              ⚡ pwrd by Lightning & Nostr
+              by Aurora-Pay & Nostr
             </span>
             <Signal className="h-5 w-5 text-green-400" />
           </div>
