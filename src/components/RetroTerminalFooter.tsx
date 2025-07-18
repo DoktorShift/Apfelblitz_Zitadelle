@@ -158,7 +158,7 @@ const RetroTerminalFooter = () => {
           >
             <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
               <Users className="h-4 w-4" />
-              <span>👥 TEAM</span>
+              <span>TEAM</span>
             </div>
             
             <div className="space-y-2">
@@ -193,7 +193,7 @@ const RetroTerminalFooter = () => {
             <div>
               <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
                 <MessageCircle className="h-4 w-4" />
-                <span>🗨️ COMMUNITY</span>
+                <span>COMMUNITY</span>
               </div>
               
               <div className="font-mono text-xs">
@@ -214,7 +214,7 @@ const RetroTerminalFooter = () => {
             <div>
               <div className="font-mono text-green-400 text-sm mb-3 flex items-center gap-2">
                 <Code className="h-4 w-4" />
-                <span>⚡ STATUS</span>
+                <span>STATUS</span>
               </div>
               
               <div className="font-mono text-xs space-y-1">
