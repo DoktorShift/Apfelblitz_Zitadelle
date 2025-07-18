@@ -24,9 +24,9 @@ const MatrixCounterEffect = ({
   className, 
   prefix = '', 
   suffix = '',
-  animationDuration = 800,
+  animationDuration = 400,
   triggerDelay = 0,
-  repeatInterval = 15000
+  repeatInterval = 0
 }: MatrixCounterEffectProps) => {
   const text = `${prefix}${value}${suffix}`;
   const [letters, setLetters] = useState<LetterState[]>(() =>
