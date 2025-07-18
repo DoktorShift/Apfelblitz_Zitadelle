@@ -50,7 +50,7 @@ const RetroTerminalFooter = () => {
   const teamMembers = [
     {
       role: "Owner",
-      name: "Nibitor21 Profiles",
+      name: "Nibitor21",
       nostr: "https://primal.net/p/nprofile1qqsx4fdluu42h3clxrnuqnek35z26vav8ad6guw4akmke83rw7f3rgs0t794d",
       icon: "🔹",
       color: "text-blue-400"
