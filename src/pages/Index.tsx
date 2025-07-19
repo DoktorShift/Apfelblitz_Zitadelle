@@ -10,8 +10,16 @@ import { useTranslation } from 'react-i18next';
 const Index = () => {
   const { t } = useTranslation();
 
+  // Handle click away for language switcher
+  const handleBackgroundClick = () => {
+    // This will be handled by the LanguageSwitcher component itself
+  };
+
   return (
-    <div className="min-h-screen bg-black text-green-400 overflow-x-hidden relative">
+    <div 
+      className="min-h-screen bg-black text-green-400 overflow-x-hidden relative"
+      onClick={handleBackgroundClick}
+    >
       {/* Language Switcher */}
       <LanguageSwitcher />
 
