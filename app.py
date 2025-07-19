@@ -277,5 +277,5 @@ def api_counter_webhook():
 # === Start ===
 if __name__ == '__main__':
     init_db()
-    logging.info("Webhook-Service gestartet auf Port 5013.")
+    logging.info("Webhook-Service gestartet auf Port 5055.")
     app.run(host='127.0.0.1', port=5055)
