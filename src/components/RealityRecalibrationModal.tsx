@@ -60,9 +60,9 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        {/* Intense Matrix Rain */}
+        {/* Reduced Matrix Rain for Mobile Performance */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(200)].map((_, i) => (
+          {[...Array(window.innerWidth < 768 ? 50 : 100)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute text-green-400 font-mono text-xs select-none pointer-events-none"
@@ -71,7 +71,7 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
                 opacity: [0, 1, 1, 0],
               }}
               transition={{
-                duration: Math.random() * 2 + 1,
+                duration: Math.random() * 3 + 2,
                 repeat: Infinity,
                 delay: Math.random() * 2,
                 ease: "linear",
@@ -80,7 +80,7 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
                 left: `${Math.random() * 100}%`,
               }}
             >
-              {Array.from({ length: Math.floor(Math.random() * 20) + 10 }, (_, j) => (
+              {Array.from({ length: Math.floor(Math.random() * 8) + 4 }, (_, j) => (
                 <div key={j} style={{ opacity: Math.max(0, 1 - j * 0.05) }}>
                   {String.fromCharCode(0x30A0 + Math.random() * 96)}
                 </div>
@@ -89,23 +89,8 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
           ))}
         </div>
 
-        {/* Glitch Effects */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            filter: [
-              "hue-rotate(0deg) saturate(1)",
-              "hue-rotate(90deg) saturate(2)",
-              "hue-rotate(180deg) saturate(0.5)",
-              "hue-rotate(270deg) saturate(1.5)",
-              "hue-rotate(360deg) saturate(1)"
-            ],
-          }}
-          transition={{ duration: 0.5, repeat: 6 }}
-        />
-
         {/* Central Content */}
-        <div className="relative z-10 text-center px-4">
+        <div className="relative z-10 text-center px-4 w-full max-w-sm mx-auto">
           {/* Main Recalibration Message */}
           <motion.div
             className="mb-8"
@@ -113,18 +98,18 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
               scale: [1, 1.1, 0.9, 1.05, 1],
               rotateX: [0, 5, -5, 2, 0],
             }}
-            transition={{ duration: 0.3, repeat: 10 }}
+            transition={{ duration: 0.5, repeat: 6 }}
           >
-            <h1 className="text-2xl md:text-6xl font-black text-green-400 font-mono mb-4 glitch-text">
+            <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-black text-green-400 font-mono mb-4 glitch-text leading-tight">
               REALITY_RECALIBRATION
             </h1>
-            <div className="text-sm md:text-2xl text-green-300 font-mono">
+            <div className="text-xs sm:text-sm md:text-xl lg:text-2xl text-green-300 font-mono">
               INITIATED_FOR: {targetLanguage === 'de' ? 'DEUTSCH' : 'ENGLISH'}
             </div>
           </motion.div>
 
           {/* Progress Messages */}
-          <div className="space-y-3 min-h-[80px] md:min-h-[120px] flex flex-col justify-center">
+          <div className="space-y-3 min-h-[60px] sm:min-h-[80px] md:min-h-[120px] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={phase}
@@ -132,14 +117,14 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 1.2 }}
                 transition={{ duration: 0.3 }}
-                className="text-xs md:text-xl text-cyan-400 font-mono font-bold px-2"
+                className="text-xs sm:text-sm md:text-lg lg:text-xl text-cyan-400 font-mono font-bold px-2 leading-tight"
               >
                 {recalibrationMessages[phase]}
               </motion.div>
             </AnimatePresence>
 
             {/* Progress Bar */}
-            <div className="w-48 md:w-64 h-1.5 md:h-2 bg-green-900/30 rounded-full mx-auto overflow-hidden border border-green-500/30">
+            <div className="w-40 sm:w-48 md:w-64 h-1 sm:h-1.5 md:h-2 bg-green-900/30 rounded-full mx-auto overflow-hidden border border-green-500/30">
               <motion.div
                 className="h-full bg-gradient-to-r from-green-500 to-cyan-400 rounded-full"
                 initial={{ width: "0%" }}
@@ -150,17 +135,17 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
 
             {/* Binary Code Stream */}
             <motion.div
-              className="text-green-400/50 font-mono text-xs md:text-xs tracking-wider px-2"
+              className="text-green-400/50 font-mono text-xs tracking-wider px-2 break-all"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 0.2, repeat: Infinity }}
             >
-              {Array.from({ length: window.innerWidth < 768 ? 25 : 40 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
+              {Array.from({ length: window.innerWidth < 480 ? 20 : window.innerWidth < 768 ? 30 : 40 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
             </motion.div>
           </div>
 
           {/* Warning Message */}
           <motion.div
-            className="mt-4 md:mt-8 text-yellow-400 font-mono text-xs md:text-sm px-2"
+            className="mt-4 sm:mt-6 md:mt-8 text-yellow-400 font-mono text-xs sm:text-sm px-2 leading-tight"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 1, repeat: Infinity }}
           >
@@ -168,19 +153,19 @@ const RealityRecalibrationModal: React.FC<RealityRecalibrationModalProps> = ({
           </motion.div>
         </div>
 
-        {/* Screen Distortion Effect */}
-        <motion.div
-          className="absolute inset-0 pointer-events-none"
-          animate={{
-            background: [
-              "linear-gradient(0deg, transparent 0%, rgba(0,255,0,0.1) 50%, transparent 100%)",
-              "linear-gradient(90deg, transparent 0%, rgba(0,255,0,0.1) 50%, transparent 100%)",
-              "linear-gradient(180deg, transparent 0%, rgba(0,255,0,0.1) 50%, transparent 100%)",
-              "linear-gradient(270deg, transparent 0%, rgba(0,255,0,0.1) 50%, transparent 100%)",
-            ],
-          }}
-          transition={{ duration: 0.1, repeat: 30 }}
-        />
+        {/* Subtle Screen Distortion Effect - Only on larger screens */}
+        {window.innerWidth >= 768 && (
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            animate={{
+              background: [
+                "linear-gradient(0deg, transparent 0%, rgba(0,255,0,0.05) 50%, transparent 100%)",
+                "linear-gradient(180deg, transparent 0%, rgba(0,255,0,0.05) 50%, transparent 100%)",
+              ],
+            }}
+            transition={{ duration: 0.2, repeat: 15 }}
+          />
+        )}
       </motion.div>
     </AnimatePresence>
   );
